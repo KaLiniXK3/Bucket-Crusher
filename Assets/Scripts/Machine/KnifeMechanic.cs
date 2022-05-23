@@ -9,8 +9,10 @@ public class KnifeMechanic : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Rigidbody>() == null)
             {
-                Debug.Log(collision.gameObject.name);
-                collision.gameObject.AddComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+                Rigidbody cubeRb = collision.gameObject.AddComponent<Rigidbody>();
+                cubeRb.constraints = RigidbodyConstraints.FreezePositionZ;
+                cubeRb.mass = 1000;
+
             }
         }
     }

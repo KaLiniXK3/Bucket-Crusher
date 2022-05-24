@@ -11,7 +11,8 @@ public class KnifeMechanic : MonoBehaviour
             {
                 Rigidbody cubeRb = collision.gameObject.AddComponent<Rigidbody>();
                 cubeRb.constraints = RigidbodyConstraints.FreezePositionZ;
-                cubeRb.mass = 1000;
+                cubeRb.useGravity = true;
+                cubeRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
             }
         }

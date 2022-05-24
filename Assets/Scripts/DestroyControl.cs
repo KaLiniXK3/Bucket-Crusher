@@ -4,25 +4,19 @@ using UnityEngine;
 
 public class DestroyControl : MonoBehaviour
 {
-    public CoinSpawn spawner;
+    [SerializeField] MoneySpawner spawner;
     bool destroyed;
     bool hasSpawned;
 
-    void Start()
-    {
-        destroyed = hasSpawned = false;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(destroyed && !hasSpawned)
+        if (destroyed && !hasSpawned)
         {
             spawner.Spawn();
             hasSpawned = true;
-            
+
         }
-        if(destroyed & hasSpawned)
+        if (destroyed & hasSpawned)
         {
             destroyed = false;
             hasSpawned = false;
@@ -37,5 +31,4 @@ public class DestroyControl : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    
 }

@@ -11,7 +11,6 @@ public class IKManager : MonoBehaviour
     public float rate = 15;
     int steps = 20;
     public Joystick joystickInput;
-    [SerializeField] int speed = 3;
     float CalculateSlope(Joints joint)
     {
         float deltaTheta = 0.01f;
@@ -40,10 +39,8 @@ public class IKManager : MonoBehaviour
         }
 
         Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        position.x += joystickInput.Horizontal * Time.deltaTime * speed;
-        position.y += joystickInput.Vertical * Time.deltaTime * speed;
-        position.x = Mathf.Clamp(position.x, -2, 2);
-        position.y = Mathf.Clamp(position.y, -2, 2);
+        position.x += joystickInput.Horizontal * Time.deltaTime;
+        position.y += joystickInput.Vertical * Time.deltaTime;
         transform.position = position;
 
 

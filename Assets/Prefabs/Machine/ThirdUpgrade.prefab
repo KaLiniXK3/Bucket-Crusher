@@ -234,7 +234,6 @@ MonoBehaviour:
   threshhold: 0.01
   rate: 15
   joystickInput: {fileID: 0}
-  speed: 3
 --- !u!1 &947507891621683313
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +337,6 @@ GameObject:
   - component: {fileID: 1701575392674808843}
   - component: {fileID: 5584289592177232630}
   - component: {fileID: 7662404572552495117}
-  - component: {fileID: 7662404572552495118}
   m_Layer: 0
   m_Name: knivesOutside.004
   m_TagString: Untagged
@@ -353,13 +351,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961247745940833731}
-  m_LocalRotation: {x: -0, y: 0.000000119209275, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00001237425, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.010000003, z: 0.010000002}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0012370523, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1920557053252123716}
-  m_RootOrder: 2
+  m_Father: {fileID: 2748924193550595930}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5584289592177232630
 MeshFilter:
@@ -411,19 +409,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7662404572552495118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961247745940833731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01257b9aaa66b7845a31e25e2d7ce634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 200
 --- !u!1 &3123870930644821563
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +487,6 @@ Transform:
   m_Children:
   - {fileID: 947507891817835310}
   - {fileID: 2748924193550595930}
-  - {fileID: 1701575392674808843}
   m_Father: {fileID: 5044054080958985836}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -803,7 +787,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.010000003, z: 0.010000002}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1701575392674808843}
   m_Father: {fileID: 1920557053252123716}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -869,7 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01257b9aaa66b7845a31e25e2d7ce634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  power: 0
 --- !u!114 &7191568321241740233
 MonoBehaviour:
   m_ObjectHideFlags: 0

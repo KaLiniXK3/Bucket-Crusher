@@ -8,7 +8,7 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
-        moneyText.text = money.ToString("C2");
+        SetMoneyText();
     }
 
     public void AddMoney()
@@ -16,7 +16,19 @@ public class MoneyManager : MonoBehaviour
         int moneyTypeIndex = Random.Range(0, moneyTypes.Length);
         float randomMoney = moneyTypes[moneyTypeIndex];
         money += randomMoney;
-        moneyText.text = money.ToString("C2");
+        SetMoneyText();
     }
 
+    public void SetMoneyText()
+    {
+        moneyText.text = money.ToString("C2");
+        if (money >= 1000) moneyText.text = ((double)money / 1000).ToString("$0.##k");
+        else moneyText.text = "$" + money;
+
+    }
+
+    public void SetMoney(int amount)
+    {
+        money += amount;
+    }
 }

@@ -157,7 +157,6 @@ Transform:
   m_Children:
   - {fileID: 7391700388630836267}
   - {fileID: 228596997198338710}
-  - {fileID: 7793464402224786468}
   m_Father: {fileID: 6010160719268423573}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -185,7 +184,6 @@ GameObject:
   - component: {fileID: 7793464402224786468}
   - component: {fileID: 7491447968349879543}
   - component: {fileID: 977176620574975011}
-  - component: {fileID: 977176620574975010}
   m_Layer: 0
   m_Name: knivesOutside.001
   m_TagString: Untagged
@@ -201,12 +199,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5180989995975655279}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00001828745, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
+  m_LocalPosition: {x: 0, y: 0.000539422, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6066803087975034713}
-  m_RootOrder: 2
+  m_Father: {fileID: 228596997198338710}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7491447968349879543
 MeshFilter:
@@ -258,19 +256,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &977176620574975010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5180989995975655279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01257b9aaa66b7845a31e25e2d7ce634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 200
 --- !u!1 &6895320831888931259
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +336,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.000012890436, z: 0}
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7793464402224786468}
   m_Father: {fileID: 6066803087975034713}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -417,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01257b9aaa66b7845a31e25e2d7ce634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  power: 0
 --- !u!114 &228596997198338707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +587,6 @@ MonoBehaviour:
   threshhold: 0.01
   rate: 15
   joystickInput: {fileID: 0}
-  speed: 3
 --- !u!1 &7391700389875066661
 GameObject:
   m_ObjectHideFlags: 0

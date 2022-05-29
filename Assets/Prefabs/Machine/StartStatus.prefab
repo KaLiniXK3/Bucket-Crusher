@@ -33,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.000015804777, z: 0}
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5451870159572240709}
   m_Father: {fileID: 5396322521673356370}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01257b9aaa66b7845a31e25e2d7ce634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  power: 0
 --- !u!114 &6527585811680087371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +200,6 @@ GameObject:
   - component: {fileID: 5451870159572240709}
   - component: {fileID: 5658986824225065380}
   - component: {fileID: 996670034133022697}
-  - component: {fileID: 5658986824225065387}
   m_Layer: 0
   m_Name: knivesOutside
   m_TagString: Untagged
@@ -215,12 +215,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3289091122021920780}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.000010411488, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
+  m_LocalPosition: {x: 0, y: 0.000539096, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5396322521673356370}
-  m_RootOrder: 2
+  m_Father: {fileID: 6527585811680087367}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5658986824225065380
 MeshFilter:
@@ -272,19 +272,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5658986824225065387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3289091122021920780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01257b9aaa66b7845a31e25e2d7ce634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 200
 --- !u!1 &3775223735295476440
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +494,6 @@ MonoBehaviour:
   threshhold: 0.01
   rate: 15
   joystickInput: {fileID: 0}
-  speed: 3
 --- !u!1 &6413273551499281078
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +557,6 @@ Transform:
   m_Children:
   - {fileID: 4081704018181412497}
   - {fileID: 6527585811680087367}
-  - {fileID: 5451870159572240709}
   m_Father: {fileID: 2249638872752752411}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

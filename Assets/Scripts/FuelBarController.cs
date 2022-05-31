@@ -1,40 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-public class FuelManager : MonoBehaviour
+
+public class FuelBarController : MonoBehaviour
 {
-    public static float fuel; // float fuel idi
+    float fuel;
     [SerializeField] Slider fuelAmountSlider;
     [SerializeField] MachineData machineData;
-    //[SerializeField] TextMeshProUGUI fuelAmountText;//
+
 
 
     private void Start()
     {
         SetFuel();
         fuelAmountSlider.maxValue = fuel;
-        //SetFuelAmountText();//
+
+        
+     
+       
     }
 
+    // Update is called once per frame
     private void Update()
     {
         if (fuel >= 0)
         {
             fuel -= Time.deltaTime * 1.2f;
             fuelAmountSlider.value = fuel;
-           
-            
         }
+        
     }
-
-    /*public void SetFuelAmountText()
-    {
-        fuelAmountText.text = fuel.ToString("0");
-    }*/
 
     public void SetFuel()
     {
         fuel = machineData.fuel;
         fuelAmountSlider.maxValue = fuel;
     }
+    
 }

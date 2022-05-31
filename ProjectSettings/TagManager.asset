@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Cube
   - Knife
+  - 500
+  - 300
+  - 0
+  - 1.5k
+  - 5
+  - 75
+  - 50
+  - 25
   layers:
   - Default
   - TransparentFX

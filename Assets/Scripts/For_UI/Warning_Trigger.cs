@@ -17,11 +17,24 @@ public class Warning_Trigger : MonoBehaviour
     void Update()
     {
         fuelAmount = FuelManager.fuel;
-        
+
         if (fuelAmount <= 35)
-            animator.SetTrigger("Warning");
+            StartCoroutine(Blink());
+            /* animator.SetTrigger("Warning"); */
         
        
         
+    }
+
+     IEnumerator Blink()
+    {
+        animator.SetTrigger("Warning");
+
+        yield return new WaitForSeconds(4);
+
+        animator.ResetTrigger("Warning");
+
+
+
     }
 }

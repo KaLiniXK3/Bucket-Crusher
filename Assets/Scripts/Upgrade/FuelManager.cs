@@ -10,6 +10,8 @@ public class FuelManager : MonoBehaviour
     [SerializeField] MachineData machineData;
     //[SerializeField] TextMeshProUGUI fuelAmountText;//
     public GameObject Canvas;
+    public TextMeshProUGUI earnedMoneyText;
+    public MoneyManager earnedMoney;
 
 
     private void Start()
@@ -49,6 +51,9 @@ public class FuelManager : MonoBehaviour
     {
         
         Canvas.SetActive(true);
+        if (earnedMoney.money >= 1000) earnedMoneyText.text = ((double)earnedMoney.money / 1000).ToString("$0.##K");
+        else earnedMoneyText.text = "$" + earnedMoney.money;
+       
 
         yield return new WaitForSeconds(4);
 

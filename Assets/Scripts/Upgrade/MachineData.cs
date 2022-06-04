@@ -4,13 +4,15 @@ public class MachineData : MonoBehaviour
 {
     public Vector3 size;
     public int power;
-    public float fuel = 100;
+    public float fuel;
     public int length = 1;
+
     RotateKnife rotateKnife;
     [SerializeField] FuelManager fuelManager;
     public GameObject[] lengths;
     public GameObject[] knives;
     GameObject currentMachine;
+
     private void Start()
     {
         if (currentMachine == null)
@@ -27,8 +29,9 @@ public class MachineData : MonoBehaviour
         }
 
         power = 200;
+        fuel = 100;
+        fuelManager.SetFuel();
         rotateKnife = currentMachine.GetComponent<RotateKnife>();
-
         size = currentMachine.transform.localScale;
         rotateKnife.power = power;
     }
@@ -53,16 +56,16 @@ public class MachineData : MonoBehaviour
 
     public void AddLength(int oldLength, int newLength)
     {
-            lengths[oldLength].SetActive(false);
-            lengths[newLength].SetActive(true);
-            knives[newLength].SetActive(true);
-            currentMachine = knives[newLength];
-            this.gameObject.transform.parent = currentMachine.transform;
-            // Take New Machine's rotate Knife Reference
-            rotateKnife = currentMachine.GetComponent<RotateKnife>();
-            knives[oldLength].SetActive(false);
-            //Update New Machine Power And Size
-            rotateKnife.power = power;
-            currentMachine.transform.localScale = size;
+        lengths[oldLength].SetActive(false);
+        lengths[newLength].SetActive(true);
+        knives[newLength].SetActive(true);
+        currentMachine = knives[newLength];
+        this.gameObject.transform.parent = currentMachine.transform;
+        // Take New Machine's rotate Knife Reference
+        rotateKnife = currentMachine.GetComponent<RotateKnife>();
+        knives[oldLength].SetActive(false);
+        //Update New Machine Power And Size
+        rotateKnife.power = power;
+        currentMachine.transform.localScale = size;
     }
 }

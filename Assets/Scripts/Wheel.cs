@@ -9,7 +9,7 @@ public class Wheel : MonoBehaviour
     private float timeInterval;
     private bool coroutineAllowed;
     private int finalAngle;
-    private bool earned;
+    //private bool earned;
     public GameObject fortuneCanvas;
     public GameObject gameCanvas;
     public TextMeshProUGUI winText;
@@ -96,7 +96,7 @@ public class Wheel : MonoBehaviour
 
         }
         coroutineAllowed = true;
-        earned = true;
+        //earned = true;
         yield return new WaitForSeconds(3f);
         fortuneCanvas.SetActive(false);
         gameCanvas.SetActive(true);

@@ -9,7 +9,7 @@ public class FuelManager : MonoBehaviour
     [SerializeField] Slider fuelAmountSlider;
     [SerializeField] MachineData machineData;
     //[SerializeField] TextMeshProUGUI fuelAmountText;//
-    public GameObject Canvas;
+    public GameObject outOfFuelGameobject;
     public TextMeshProUGUI earnedMoneyText;
     public MoneyManager earnedMoney;
 
@@ -17,51 +17,32 @@ public class FuelManager : MonoBehaviour
     private void Start()
     {
         SetFuel();
-        fuelAmountSlider.maxValue = fuel;
-        
-        //SetFuelAmountText();//
     }
 
     private void Update()
     {
-        if (fuel > 0) //fuel >= 0 idi
+        if (fuel > 0)
         {
-            fuel -= Time.deltaTime * 12f; //1.2f 
+            fuel -= Time.deltaTime * 12f; 
             fuelAmountSlider.value = fuel;
-           
-            
         }
         else
         {
-            
-            StartCoroutine(GoBack()); 
-            
-            
-
+            StartCoroutine(OutOfFuel());
         } 
-
     }
 
-    /*public void SetFuelAmountText()
-    {
-        fuelAmountText.text = fuel.ToString("0");
-    }*/
-
-    IEnumerator GoBack()
+    IEnumerator OutOfFuel()
     {
         
-        Canvas.SetActive(true);
+        outOfFuelGameobject.SetActive(true);
         if (earnedMoney.money >= 1000) earnedMoneyText.text = ((double)earnedMoney.money / 1000).ToString("$0.##K");
         else earnedMoneyText.text = "$" + earnedMoney.money;
-       
-
         yield return new WaitForSeconds(4);
 
-        Canvas.SetActive(false);
+        outOfFuelGameobject.SetActive(false);
 
         SetFuel();
-
-        
     }
 
     public void SetFuel()

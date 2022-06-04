@@ -9220,7 +9220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: 08034a022af9ca648971a573ee727b6c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -830
+      value: -584.49
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: 08034a022af9ca648971a573ee727b6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9244,7 +9244,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773939, guid: 08034a022af9ca648971a573ee727b6c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773951, guid: 08034a022af9ca648971a573ee727b6c, type: 3}
+      propertyPath: deadZone
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08034a022af9ca648971a573ee727b6c, type: 3}
@@ -17193,13 +17197,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 248011000}
     m_Modifications:
+    - target: {fileID: 108200148666938092, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3775223735295476440, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
       propertyPath: m_Name
       value: StartStatus
       objectReference: {fileID: 0}
     - target: {fileID: 3775223735295476440, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081704019053470532, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081704019053470539, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
+      propertyPath: rate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081704019053470539, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4081704019053470539, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
       propertyPath: joystickInput
@@ -17260,6 +17280,10 @@ PrefabInstance:
     - target: {fileID: 5658986824225065387, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
       propertyPath: machineData
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527585811680087364, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6527585811680087366, guid: c040c2e58cc84b647a7bcc9dac4b8318, type: 3}
       propertyPath: power
@@ -17550,7 +17574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7662295901805138498, guid: 547141522f9716642ba3b895e516b7fc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 547141522f9716642ba3b895e516b7fc, type: 3}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2516907357748033099}
   - component: {fileID: 2695229096123770611}
-  - component: {fileID: 2303577809640549796}
+  - component: {fileID: 4085200539981781037}
   m_Layer: 0
   m_Name: 0.25 Coin Money
   m_TagString: Untagged
@@ -51,8 +51,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!65 &2303577809640549796
-BoxCollider:
+--- !u!136 &4085200539981781037
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -61,9 +61,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.0521057, y: 2.071679, z: 0.19746348}
-  m_Center: {x: 0.002447702, y: -0.0024465844, z: -0.02446808}
+  m_Radius: 0.99
+  m_Height: 2.0594163
+  m_Direction: 1
+  m_Center: {x: -0.013846967, y: 0.010387104, z: -0.009999984}
 --- !u!1 &4483772513214400785
 GameObject:
   m_ObjectHideFlags: 0

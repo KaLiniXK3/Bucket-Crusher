@@ -11,13 +11,13 @@ public class FuelManager : MonoBehaviour
     //[SerializeField] TextMeshProUGUI fuelAmountText;//
     public GameObject outOfFuelScreen;
     public TextMeshProUGUI earnedMoneyText;
-    public MoneyManager earnedMoney;
+    public MoneyManager money;
 
     IEnumerator OutOfFuel()
     {
         outOfFuelScreen.SetActive(true);
-        if (earnedMoney.money >= 1000) earnedMoneyText.text = ((double)earnedMoney.money / 1000).ToString("$0.##K");
-        else earnedMoneyText.text = "$" + earnedMoney.money;
+        if (money.money >= 1000) earnedMoneyText.text = ((double)money.money / 1000).ToString("$0.##K");
+        else earnedMoneyText.text = "$" + money.money;
         yield return new WaitForSeconds(4);
         outOfFuelScreen.SetActive(false);
         SetFuel();

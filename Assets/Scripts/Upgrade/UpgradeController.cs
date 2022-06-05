@@ -4,7 +4,7 @@ using System.Globalization;
 
 public class UpgradeController : MonoBehaviour
 {
-    int[] lengthCosts = new int[] { 10, 300, 4000, 10000 };
+    int[] lengthCosts = new int[] { 300, 4000, 10000 };
 
     int[] fuelCosts = new int[] { 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 270, 280, 290 };
     int[] powerCosts = new int[] { 5, 20, 100, 200, 300, 1000, 1200, 1300, 1400, 1500, 1600, 1700, 2000, 3000, 4000 };
@@ -22,7 +22,7 @@ public class UpgradeController : MonoBehaviour
     public TextMeshProUGUI sizeCostText;
 
     //Costs
-    int lengthCost = 10;
+    int lengthCost = 300;
     int fuelCost = 5;
     int powerCost = 5;
     int sizeCost = 15;

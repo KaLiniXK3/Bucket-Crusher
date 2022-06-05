@@ -1,27 +1,14 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SceneManagement;
+
 public class FuelManager : MonoBehaviour
 {
-    public float fuel; // float fuel idi
+    public float fuel;
+    public bool outOfFuel;
     [SerializeField] Slider fuelAmountSlider;
     [SerializeField] MachineData machineData;
-    //[SerializeField] TextMeshProUGUI fuelAmountText;//
-    public GameObject outOfFuelScreen;
-    public TextMeshProUGUI earnedMoneyText;
-    public MoneyManager money;
+    [SerializeField] GameManager gameManager;
 
-    IEnumerator OutOfFuel()
-    {
-        outOfFuelScreen.SetActive(true);
-        if (money.money >= 1000) earnedMoneyText.text = ((double)money.money / 1000).ToString("$0.##K");
-        else earnedMoneyText.text = "$" + money.money;
-        yield return new WaitForSeconds(4);
-        outOfFuelScreen.SetActive(false);
-        SetFuel();
-    }
 
     public void UseFuel()
     {
@@ -32,7 +19,12 @@ public class FuelManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(OutOfFuel());
+            if (!outOfFuel)
+            {
+                outOfFuel = true;
+                StartCoroutine(gameManager.OutOfFuelEvents());
+            }
+
         }
     }
 

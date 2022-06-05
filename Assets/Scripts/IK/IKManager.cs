@@ -12,6 +12,9 @@ public class IKManager : MonoBehaviour
     int steps = 20;
     public Joystick joystickInput;
     [SerializeField] float speed = 3;
+
+    public GameObject[] bones;
+
     float CalculateSlope(Joints joint)
     {
         float deltaTheta = 0.01f;

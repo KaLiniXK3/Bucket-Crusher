@@ -10,6 +10,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public Vector2 Direction { get { return new Vector2(Horizontal, Vertical); } }
 
     public FuelManager fuelManager;
+    public GameManager gameManager;
 
     public float HandleRange
     {
@@ -34,13 +35,13 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [SerializeField] private bool snapY = false;
 
     [SerializeField] protected RectTransform background = null;
-    [SerializeField] private RectTransform handle = null;
+    public RectTransform handle = null;
     private RectTransform baseRect = null;
 
     private Canvas canvas;
     private Camera cam;
 
-    private Vector2 input = Vector2.zero;
+    public Vector2 input = Vector2.zero;
 
     public GameObject Target;
 
@@ -69,6 +70,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public void OnDrag(PointerEventData eventData)
     {
         fuelManager.UseFuel();
+        gameManager.setCameraStartPos = false;
         cam = null;
         if (canvas.renderMode == RenderMode.ScreenSpaceCamera)
             cam = canvas.worldCamera;

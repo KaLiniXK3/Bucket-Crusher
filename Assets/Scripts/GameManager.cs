@@ -6,15 +6,18 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] MoneyManager moneyManager;
     [SerializeField] FuelManager fuelManager;
+    [SerializeField] UpgradeController upgradeController;
     [SerializeField] GameObject OutOfFuelScreen;
     [SerializeField] TextMeshProUGUI earnedMoneyText;
     [SerializeField] MachineData machineData;
     [SerializeField] GameObject hud;
-    [SerializeField] GameObject upgradeHud;
+    public GameObject upgradeHud;
+    public WarningTrigger warningTrigger;
     [SerializeField] GameObject moneyHud;
     [SerializeField] GameObject cam;
+    public GameObject fortune;
     public Vector3 targetStartPos;
-    Vector3 cameraStartPos = new Vector3(0, 0.4f, -2.5f);
+    Vector3 cameraStartPos = new Vector3(0, 0.4f, -2.70f);
     Vector3 cameraUpgradePos = new Vector3(-0.37f, 0.55f, -3.30f);
     public GameObject currentMachine;
     bool setCameraUpgradePos;
@@ -23,10 +26,14 @@ public class GameManager : MonoBehaviour
     public GameObject currentCube;
     public GameObject parentCube;
     int level = 0;
+    float startMoney;
+    float currentMoney;
+    int forFortuneRemainingCount;
 
     private void Start()
     {
         currentCube = parentCube.transform.GetChild(0).gameObject;
+        startMoney = moneyManager.money;
     }
     private void Update()
     {
@@ -44,9 +51,10 @@ public class GameManager : MonoBehaviour
         OutOfFuelScreen.SetActive(true);
         hud.SetActive(false);
         moneyHud.SetActive(false);
-        float money = moneyManager.money;
-        if (money >= 1000) earnedMoneyText.text = ((double)money / 1000).ToString("$0.##k");
-        else earnedMoneyText.text = "$" + money;
+        currentMoney = moneyManager.money;
+        float earnedMoney = currentMoney - startMoney;
+        if (earnedMoney >= 1000) earnedMoneyText.text = ((double)earnedMoney / 1000).ToString("$0.##k");
+        else earnedMoneyText.text = "$" + earnedMoney;
         Destroy(currentCube);
         yield return new WaitForSeconds(1.5f);
         moneyHud.SetActive(true);
@@ -54,12 +62,14 @@ public class GameManager : MonoBehaviour
         fuelManager.SetFuel();
         fuelManager.outOfFuel = false;
         currentCube = Instantiate(cubePrefabs[level], cubePrefabs[level].transform.position, Quaternion.identity, parentCube.transform) as GameObject;
-
+        forFortuneRemainingCount++;
         UpgradeEvent();
-
     }
     public void UpgradeEvent()
     {
+        upgradeController.CheckCanBuy();
+        fortune.SetActive(false);
+        warningTrigger.image.color = new Color(warningTrigger.image.color.r, warningTrigger.image.color.g, warningTrigger.image.color.b, 0.0f);
         GameObject currentMachine = machineData.currentMachine;
         IKManager target = currentMachine.GetComponentInChildren<IKManager>();
         target.joystickInput.input.x = 0;
@@ -72,12 +82,23 @@ public class GameManager : MonoBehaviour
         }
         target.target.transform.position = targetStartPos;
         setCameraUpgradePos = true;
-
-        upgradeHud.SetActive(true);
+        if (forFortuneRemainingCount == 3)
+        {
+            fortune.SetActive(true);
+            forFortuneRemainingCount = 0;
+        }
+        else
+            upgradeHud.SetActive(true);
     }
     public void SetCameraStartPos()
     {
         setCameraUpgradePos = false;
         setCameraStartPos = true;
     }
+    public void SaveMoney()
+    {
+        startMoney = moneyManager.money;
+    }
+
+
 }

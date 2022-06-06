@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using System.Globalization;
 
 public class UpgradeController : MonoBehaviour
@@ -20,6 +21,12 @@ public class UpgradeController : MonoBehaviour
     public TextMeshProUGUI fuelCostText;
     public TextMeshProUGUI powerCostText;
     public TextMeshProUGUI sizeCostText;
+
+    //Buttons
+    public Button lengthButton;
+    public Button fuelButton;
+    public Button powerButton;
+    public Button sizeButton;
 
     //Costs
     int lengthCost = 300;
@@ -57,8 +64,9 @@ public class UpgradeController : MonoBehaviour
             if (lengthUpdateCount + 1 <= lengthCosts.Length)
             {
                 lengthUpdateCount++;
-                Debug.Log(lengthUpdateCount);
                 machineData.AddLength(lengthUpdateCount - 1, lengthUpdateCount);
+                moneyManager.SetMoney(-lengthCost);
+                moneyManager.SetMoneyText();
                 if (lengthUpdateCount < lengthCosts.Length)
                 {
                     lengthCost = lengthCosts[lengthUpdateCount];
@@ -66,8 +74,9 @@ public class UpgradeController : MonoBehaviour
                 }
                 if (lengthUpdateCount == lengthCosts.Length - 1)
                 {
-                    Debug.Log("Max Length");
+                    SetUpgradeCostText(lengthCostText, 0);
                 }
+                CheckCanBuy();
             }
         }
     }
@@ -89,8 +98,9 @@ public class UpgradeController : MonoBehaviour
                 }
                 if (fuelUpdateCount == fuelCosts.Length - 1)
                 {
-                    Debug.Log("Max Fuel");
+                    SetUpgradeCostText(fuelCostText, 0);
                 }
+                CheckCanBuy();
             }
         }
     }
@@ -101,7 +111,7 @@ public class UpgradeController : MonoBehaviour
         {
             if (powerUpdateCount + 1 < powerCosts.Length)
             {
-                machineData.AddPower(100);
+                machineData.AddPower(50);
                 powerUpdateCount++;
                 moneyManager.SetMoney(-powerCost);
                 moneyManager.SetMoneyText();
@@ -112,8 +122,9 @@ public class UpgradeController : MonoBehaviour
                 }
                 if (powerUpdateCount == powerCosts.Length - 1)
                 {
-                    Debug.Log("Max Power");
+                    SetUpgradeCostText(powerCostText, 0);
                 }
+                CheckCanBuy();
             }
         }
     }
@@ -128,20 +139,56 @@ public class UpgradeController : MonoBehaviour
                 machineData.AddSize(sizeUpgradeAmount);
                 moneyManager.SetMoney(-sizeCost);
                 moneyManager.SetMoneyText();
+                CheckCanBuy();
                 sizeCost = sizeCosts[sizeUpdateCount];
                 SetUpgradeCostText(sizeCostText, sizeCost);
-                Debug.Log("sizeUpdate" + sizeUpdateCount);
                 if (sizeUpdateCount == sizeCosts.Length - 1)
                 {
-                    Debug.Log("Max Size");
+                    SetUpgradeCostText(sizeCostText, 0);
                 }
+                CheckCanBuy();
             }
         }
     }
 
     void SetUpgradeCostText(TextMeshProUGUI upgradeTypeText, int upgradeTypeCost)
     {
-        if (upgradeTypeCost >= 1000) upgradeTypeText.text = ((double)upgradeTypeCost / 1000).ToString("$0.##k");
+        // MAX 
+        if (upgradeTypeCost == 0)
+        {
+            upgradeTypeText.text = "MAX";
+        }
+        else if (upgradeTypeCost >= 1000) upgradeTypeText.text = ((double)upgradeTypeCost / 1000).ToString("$0.##k");
         else upgradeTypeText.text = "$" + upgradeTypeCost;
+    }
+
+    public void CheckCanBuy()
+    {
+        if (moneyManager.money < lengthCost)
+        {
+            lengthButton.interactable = false;
+        }
+        else
+            lengthButton.interactable = true;
+
+        if (moneyManager.money < fuelCost)
+        {
+            fuelButton.interactable = false;
+        }
+        else
+        {
+            fuelButton.interactable = true;
+        }
+        if (moneyManager.money < powerCost)
+        {
+            powerButton.interactable = false;
+        }
+        else powerButton.interactable = true;
+        if (moneyManager.money < sizeCost)
+        {
+            sizeButton.interactable = false;
+        }
+        else
+            sizeButton.interactable = true;
     }
 }

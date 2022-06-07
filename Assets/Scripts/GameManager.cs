@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI earnedMoneyText;
     [SerializeField] MachineData machineData;
     [SerializeField] GameObject hud;
+    [SerializeField] LevelProgress levelProgress;
     public GameObject upgradeHud;
     public WarningTrigger warningTrigger;
     [SerializeField] GameObject moneyHud;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] cubePrefabs;
     public GameObject currentCube;
     public GameObject parentCube;
-    int level = 0;
+    int level;
     float startMoney;
     float currentMoney;
     int forFortuneRemainingCount;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(level);
         if (setCameraUpgradePos)
         {
             cam.transform.position = Vector3.Lerp(cam.transform.position, cameraUpgradePos, Time.deltaTime);
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator OutOfFuelEvents()
     {
         OutOfFuelScreen.SetActive(true);
+        level = levelProgress.sceneBuildIndex;
         hud.SetActive(false);
         moneyHud.SetActive(false);
         currentMoney = moneyManager.money;
@@ -62,13 +65,13 @@ public class GameManager : MonoBehaviour
         fuelManager.SetFuel();
         fuelManager.outOfFuel = false;
         currentCube = Instantiate(cubePrefabs[level], cubePrefabs[level].transform.position, Quaternion.identity, parentCube.transform) as GameObject;
+        levelProgress.destroyedCubeAmount = 0;
         forFortuneRemainingCount++;
         UpgradeEvent();
     }
     public void UpgradeEvent()
     {
         upgradeController.CheckCanBuy();
-        fortune.SetActive(false);
         warningTrigger.image.color = new Color(warningTrigger.image.color.r, warningTrigger.image.color.g, warningTrigger.image.color.b, 0.0f);
         GameObject currentMachine = machineData.currentMachine;
         IKManager target = currentMachine.GetComponentInChildren<IKManager>();

@@ -5,90 +5,108 @@ using TMPro;
 
 public class Fortune : MonoBehaviour
 {
-    private int randomvalue;
-    private float timeInterval;
-    private bool coroutineAllowed;
-    private int finalAngle;
     public GameObject fortuneCanvas;
     public TextMeshProUGUI winText;
     public GameObject spinTheWheelText;
     public MoneyManager moneyManager;
     public GameManager gameManager;
+    public float genSpeed;
+    public float subSpeed;
+    public bool isSpinning;
+    public bool canSpin;
+    public bool canStartSpin;
 
-    private void Start()
+    private void OnEnable()
     {
         fortuneCanvas.SetActive(true);
-        coroutineAllowed = true;
+        canStartSpin = true;
+        canSpin = true;
+        genSpeed = 1;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && coroutineAllowed)
+
+        if (Input.GetMouseButtonDown(0) && canStartSpin && canSpin)
         {
-            StartCoroutine(Spin());
             spinTheWheelText.SetActive(false);
+            spinTheWheel();
+        }
+
+        if (isSpinning)
+        {
+            transform.Rotate(0, 0, genSpeed, Space.World);
+            genSpeed -= subSpeed;
+        }
+        if (genSpeed <= 0)
+        {
+            genSpeed = 1;
+            isSpinning = false;
+            canSpin = false;
+        }
+        if (!isSpinning && transform.eulerAngles.z >= 0 && transform.eulerAngles.z <= 45 && !canSpin)
+        {
+
+            StartCoroutine(StopText("500", 500));
+        }
+        if (!isSpinning && transform.eulerAngles.z > 45 && transform.eulerAngles.z <= 90 && !canSpin)
+        {
+            StartCoroutine(StopText("300", 300));
+        }
+        if (!isSpinning && transform.eulerAngles.z > 90 && transform.eulerAngles.z <= 135 && !canSpin)
+        {
+            StartCoroutine(StopText("0", 0));
+        }
+        if (!isSpinning && transform.eulerAngles.z > 135 && transform.eulerAngles.z <= 180 && !canSpin)
+        {
+            StartCoroutine(StopText("1.5k", 1500));
+        }
+        if (!isSpinning && transform.eulerAngles.z > 180 && transform.eulerAngles.z <= 225 && !canSpin)
+        {
+            StartCoroutine(StopText("5", 5));
+        }
+        if (!isSpinning && transform.eulerAngles.z > 225 && transform.eulerAngles.z <= 270 && !canSpin)
+        {
+            StartCoroutine(StopText("75", 75));
+        }
+        if (!isSpinning && transform.eulerAngles.z > 270 && transform.eulerAngles.z <= 315 && !canSpin)
+        {
+            StartCoroutine(StopText("50", 50));
+        }
+        if (!isSpinning && transform.eulerAngles.z > 315 && transform.eulerAngles.z <= 360 && !canSpin)
+        {
+            StartCoroutine(StopText("25", 25));
         }
     }
-    private IEnumerator Spin()
+    IEnumerator StopText(string text, int amount)
     {
-        coroutineAllowed = false;
-        randomvalue = Random.Range(70, 100);
-        timeInterval = 0.05f;
-
-
-        for (int i = 0; i < randomvalue; i++)
+        canSpin = true;
+        winText.gameObject.SetActive(true);
+        if (amount == 0)
         {
-            transform.Rotate(0, 0, 22.5f);
-            if (i > Mathf.RoundToInt(randomvalue * 0.5f))
-                timeInterval = 0.1f;
-            if (i > Mathf.RoundToInt(randomvalue * 0.85f))
-                timeInterval = 0.2f;
-            yield return new WaitForSeconds(timeInterval);
+            winText.text = "Unlucky :(";
         }
-        if (Mathf.RoundToInt(transform.eulerAngles.z) % 45 != 0)
-            transform.Rotate(0, 0, 22.5f);
-        finalAngle = Mathf.RoundToInt(transform.eulerAngles.z);
-        Debug.Log(finalAngle);
-        switch (finalAngle)
-        {
-            case 45:
-                winText.text = "$500";
-                moneyManager.money += 500;
-                break;
-            case 90:
-                winText.text = "$300";
-                moneyManager.money += 300;
-                break;
-            case 135:
-                winText.text = "$0";
-                moneyManager.money += 0;
-                break;
-            case 180:
-                winText.text = "$1.5k";
-                moneyManager.money += 1500;
-                break;
-            case 225:
-                winText.text = "$5";
-                moneyManager.money += 5;
-                break;
-            case 270:
-                winText.text = "$75";
-                moneyManager.money += 75;
-                break;
-            case 315:
-                winText.text = "$50";
-                moneyManager.money += 50;
-                break;
-            case 360:
-                winText.text = "$25";
-                moneyManager.money += 25;
-                break;
-        }
-        coroutineAllowed = true;
-        yield return new WaitForSeconds(3f);
-        gameManager.upgradeHud.SetActive(true);
-        gameManager.fortune.SetActive(false);
+        else winText.text = "+$" + text;
+
+        moneyManager.SetMoney(amount);
+        yield return new WaitForSeconds(0.80f);
+        moneyManager.SetMoneyText();
+        yield return new WaitForSeconds(1.20f);
+        winText.gameObject.SetActive(false);
         winText.text = "";
+        gameManager.fortune.SetActive(false);
         fortuneCanvas.SetActive(false);
+        spinTheWheelText.SetActive(true);
+        gameManager.upgradeHud.SetActive(true);
+        gameManager.UpgradeEvent();
+        canStartSpin = true;
     }
+    public void spinTheWheel()
+    {
+        isSpinning = true;
+        canStartSpin = false;
+        genSpeed = Random.Range(4, 7);
+        subSpeed = Random.Range(0.006f, 0.012f);
+    }
+
 }

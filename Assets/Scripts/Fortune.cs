@@ -98,6 +98,7 @@ public class Fortune : MonoBehaviour
         fortuneCanvas.SetActive(false);
         spinTheWheelText.SetActive(true);
         gameManager.upgradeHud.SetActive(true);
+        gameManager.playButton.SetActive(true);
         gameManager.UpgradeEvent();
         canStartSpin = true;
     }

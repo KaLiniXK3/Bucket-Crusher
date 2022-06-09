@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject hud;
     [SerializeField] LevelProgress levelProgress;
     public GameObject upgradeHud;
+    public GameObject playButton;
     public WarningTrigger warningTrigger;
     [SerializeField] GameObject moneyHud;
     [SerializeField] GameObject cam;
@@ -38,7 +39,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(level);
         if (setCameraUpgradePos)
         {
             cam.transform.position = Vector3.Lerp(cam.transform.position, cameraUpgradePos, Time.deltaTime);
@@ -91,7 +91,10 @@ public class GameManager : MonoBehaviour
             forFortuneRemainingCount = 0;
         }
         else
+        {
             upgradeHud.SetActive(true);
+            playButton.SetActive(true);
+        }
     }
     public void SetCameraStartPos()
     {

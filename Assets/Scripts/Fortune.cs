@@ -48,34 +48,42 @@ public class Fortune : MonoBehaviour
         {
 
             StartCoroutine(StopText("500", 500));
+            SoundManager.PlayTheSound("wheelEarnedMoney");
         }
         if (!isSpinning && transform.eulerAngles.z > 45 && transform.eulerAngles.z <= 90 && !canSpin)
         {
             StartCoroutine(StopText("300", 300));
+            SoundManager.PlayTheSound("wheelEarnedMoney");
         }
         if (!isSpinning && transform.eulerAngles.z > 90 && transform.eulerAngles.z <= 135 && !canSpin)
         {
             StartCoroutine(StopText("0", 0));
+            SoundManager.PlayTheSound("wheelEarnedMoney");
         }
         if (!isSpinning && transform.eulerAngles.z > 135 && transform.eulerAngles.z <= 180 && !canSpin)
         {
             StartCoroutine(StopText("1.5k", 1500));
+            SoundManager.PlayTheSound("wheelEarnedMoney");
         }
         if (!isSpinning && transform.eulerAngles.z > 180 && transform.eulerAngles.z <= 225 && !canSpin)
         {
             StartCoroutine(StopText("5", 5));
+            SoundManager.PlayTheSound("wheelEarnedMoney");
         }
         if (!isSpinning && transform.eulerAngles.z > 225 && transform.eulerAngles.z <= 270 && !canSpin)
         {
             StartCoroutine(StopText("75", 75));
+            SoundManager.PlayTheSound("wheelEarnedMoney");
         }
         if (!isSpinning && transform.eulerAngles.z > 270 && transform.eulerAngles.z <= 315 && !canSpin)
         {
             StartCoroutine(StopText("50", 50));
+            SoundManager.PlayTheSound("wheelEarnedMoney");
         }
         if (!isSpinning && transform.eulerAngles.z > 315 && transform.eulerAngles.z <= 360 && !canSpin)
         {
             StartCoroutine(StopText("25", 25));
+            SoundManager.PlayTheSound("wheelEarnedMoney");
         }
     }
     IEnumerator StopText(string text, int amount)
@@ -91,7 +99,7 @@ public class Fortune : MonoBehaviour
         moneyManager.SetMoney(amount);
         yield return new WaitForSeconds(0.80f);
         moneyManager.SetMoneyText();
-        yield return new WaitForSeconds(1.20f);
+        yield return new WaitForSeconds(1.65f);
         winText.gameObject.SetActive(false);
         winText.text = "";
         gameManager.fortune.SetActive(false);

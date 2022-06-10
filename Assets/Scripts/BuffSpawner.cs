@@ -12,7 +12,7 @@ public class BuffSpawner : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnRandomBuffDebuff", startDelay, spawnInterval);
+        InvokeRepeating("SpawnRandomBuff", startDelay, spawnInterval);
     }
 
     // Update is called once per frame
@@ -21,11 +21,11 @@ public class BuffSpawner : MonoBehaviour
 
 
     }
-   public void SpawnRandomBuffDebuff()
+   public void SpawnRandomBuff()
     {
-        int buffDebuffIndex = Random.Range(0, buffsDebuffs.Length);
+        int buffIndex = Random.Range(0, buffs.Length);
         Vector3 spawnPos = new Vector3(Random.Range(-0.125f, 0.258f), transform.position.y, transform.position.z);
 
-        Instantiate(buffsDebuffs[buffDebuffIndex], spawnPos, buffsDebuffs[buffDebuffIndex].transform.rotation);
+        Instantiate(buffs[buffIndex], spawnPos, buffs[buffIndex].transform.rotation);
     }
 }

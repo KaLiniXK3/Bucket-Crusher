@@ -36,7 +36,7 @@ public class LevelProgress : MonoBehaviour
     IEnumerator NextLevel()
     {
         levelFinishedImage.SetActive(true);
-        SoundManager.PlayTheSound("fuelBuff");
+        SoundManager.PlayTheSound("levelFinished");
         yield return new WaitForSeconds(2.3f);
         levelFinishedImage.SetActive(false);
         SceneManager.LoadScene(sceneBuildIndex + 1);

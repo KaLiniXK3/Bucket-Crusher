@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuffSpawner : MonoBehaviour
 {
-    public GameObject[] buffsDebuffs;
+    public GameObject[] buffs;
     private float startDelay = 5;
     private float spawnInterval = 10;
 

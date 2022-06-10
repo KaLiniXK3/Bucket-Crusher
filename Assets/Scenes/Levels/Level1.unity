@@ -13337,7 +13337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51fdd47ac1ff9c4f92e11a282f26946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffsDebuffs:
+  buffs:
   - {fileID: 6069024381579780905, guid: 303ee4f0ceaba7340b4eba4c03d116db, type: 3}
   - {fileID: 2199055237450718629, guid: adae32a5c7d0c6f4098f86e29c823776, type: 3}
 --- !u!1 &1438817127

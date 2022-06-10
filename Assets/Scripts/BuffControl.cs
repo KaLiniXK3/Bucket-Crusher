@@ -14,7 +14,6 @@ public class BuffControl: MonoBehaviour
             SoundManager.PlayTheSound("moneyBuff");
             mM.AddMoney2();
             mM.SetMoneyText();
-            Debug.Log("MoneyEarned");
         }
         if (collision.gameObject.CompareTag("Fuel Buff"))
         {
@@ -23,9 +22,6 @@ public class BuffControl: MonoBehaviour
             fuelManager.fuel +=  (fuelManager.fuel / 4);
             fuelManager.fuelAmountSlider.value = fuelManager.fuel;
             fuelManager.UseFuel();
-
-            Debug.Log("FuelEarned");
-            Debug.Log(fuelManager.fuel);
         }
     }
     

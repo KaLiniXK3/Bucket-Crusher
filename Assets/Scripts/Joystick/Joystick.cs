@@ -64,7 +64,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("TRY");
         OnDrag(eventData);
     }
 

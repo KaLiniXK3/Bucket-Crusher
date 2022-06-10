@@ -5,7 +5,7 @@ public class FuelManager : MonoBehaviour
 {
     public float fuel;
     public bool outOfFuel;
-    [SerializeField] Slider fuelAmountSlider;
+    [SerializeField] public Slider fuelAmountSlider;
     [SerializeField] MachineData machineData;
     [SerializeField] GameManager gameManager;
 

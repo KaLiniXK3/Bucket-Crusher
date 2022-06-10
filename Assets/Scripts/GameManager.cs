@@ -31,11 +31,14 @@ public class GameManager : MonoBehaviour
     float startMoney;
     float currentMoney;
     int forFortuneRemainingCount;
+    public GameObject buffDebuffSpawner;
 
     private void Start()
     {
         currentCube = parentCube.transform.GetChild(0).gameObject;
         startMoney = moneyManager.money;
+        playButton.SetActive(true);
+        hud.SetActive(false);
     }
     private void Update()
     {
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour
         level = levelProgress.sceneBuildIndex;
         hud.SetActive(false);
         moneyHud.SetActive(false);
+        buffDebuffSpawner.SetActive(false);
+        playButton.SetActive(false);
         currentMoney = moneyManager.money;
         float earnedMoney = currentMoney - startMoney;
         if (earnedMoney >= 1000) earnedMoneyText.text = ((double)earnedMoney / 1000).ToString("$0.##k");
@@ -62,6 +67,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         moneyHud.SetActive(true);
         OutOfFuelScreen.SetActive(false);
+        buffDebuffSpawner.SetActive(false);
         fuelManager.SetFuel();
         fuelManager.outOfFuel = false;
         currentCube = Instantiate(cubePrefabs[level], cubePrefabs[level].transform.position, Quaternion.identity, parentCube.transform) as GameObject;

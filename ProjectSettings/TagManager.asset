@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Cube
   - Knife
+  - Money Buff
+  - Knives
+  - Fuel Buff
+  - Ground
   layers:
   - Default
   - TransparentFX

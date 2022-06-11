@@ -10948,6 +10948,7 @@ MonoBehaviour:
   currentCube: {fileID: 0}
   parentCube: {fileID: 1277788665}
   buffDebuffSpawner: {fileID: 1437147072}
+  buffSpawner: {fileID: 1437147074}
 --- !u!1 &1150246407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5180989995975655279, guid: 547141522f9716642ba3b895e516b7fc, type: 3}
@@ -12956,6 +12957,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1437147074}
+        m_TargetAssemblyTypeName: BuffSpawner, Assembly-CSharp
+        m_MethodName: Start
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

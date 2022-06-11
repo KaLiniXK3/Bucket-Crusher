@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     float currentMoney;
     int forFortuneRemainingCount;
     public GameObject buffDebuffSpawner;
+    public BuffSpawner buffSpawner;
 
     private void Start()
     {
@@ -42,6 +43,11 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (playButton.activeInHierarchy)
+        {
+            buffSpawner.CancelInvoke("SpawnRandomBuff");
+
+        }
         if (setCameraUpgradePos)
         {
             cam.transform.position = Vector3.Lerp(cam.transform.position, cameraUpgradePos, Time.deltaTime);
@@ -64,6 +70,7 @@ public class GameManager : MonoBehaviour
         if (earnedMoney >= 1000) earnedMoneyText.text = ((double)earnedMoney / 1000).ToString("$0.##k");
         else earnedMoneyText.text = "$" + earnedMoney;
         Destroy(currentCube);
+        buffSpawner.CancelInvoke("SpawnRandomBuff");
         yield return new WaitForSeconds(1.5f);
         moneyHud.SetActive(true);
         OutOfFuelScreen.SetActive(false);

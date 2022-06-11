@@ -10,7 +10,7 @@ public class BuffSpawner : MonoBehaviour
 
     public object SetActive { get; internal set; }
 
-    void Start()
+   public void Start()
     {
         InvokeRepeating("SpawnRandomBuff", startDelay, spawnInterval);
     }

@@ -10886,6 +10886,7 @@ MonoBehaviour:
   currentCube: {fileID: 0}
   parentCube: {fileID: 1277788665}
   buffDebuffSpawner: {fileID: 1437147072}
+  buffSpawner: {fileID: 0}
 --- !u!1 &1150246407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5180989995975655279, guid: 547141522f9716642ba3b895e516b7fc, type: 3}

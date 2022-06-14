@@ -17,6 +17,7 @@ public class BuffDestroy: MonoBehaviour
             Destroy(gameObject);
         
         }
+        
 
     }
 }

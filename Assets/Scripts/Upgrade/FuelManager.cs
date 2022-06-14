@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class FuelManager : MonoBehaviour
 {
     public float fuel;
-    public bool outOfFuel;
+    public bool outOfFuel = false;
     [SerializeField] public Slider fuelAmountSlider;
     [SerializeField] MachineData machineData;
     [SerializeField] GameManager gameManager;

@@ -117,7 +117,6 @@ public class GameManager : MonoBehaviour
     public void SaveMoney()
     {
         startMoney = moneyManager.money;
+        PlayerPrefs.SetFloat("Money", startMoney);
     }
-
-
 }

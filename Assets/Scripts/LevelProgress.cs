@@ -11,10 +11,12 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelCountText;
     [SerializeField] GameObject cubesParent;
     [SerializeField] GameObject levelFinishedImage;
+    [SerializeField] GameManager gameManager;
     public int destroyedCubeAmount;
     public int sceneBuildIndex;
     int maxCubeAmount;
     int percentAmount;
+
     private void Start()
     {
         maxCubeAmount = cubesParent.transform.GetChild(0).transform.childCount;
@@ -39,5 +41,10 @@ public class LevelProgress : MonoBehaviour
         yield return new WaitForSeconds(2.3f);
         levelFinishedImage.SetActive(false);
         SceneManager.LoadScene(sceneBuildIndex + 1);
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Level", sceneBuildIndex);
     }
 }

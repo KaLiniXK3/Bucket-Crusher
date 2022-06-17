@@ -9,6 +9,7 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
+        money = PlayerPrefs.GetFloat("Money");
         SetMoneyText();
     }
 
@@ -32,11 +33,15 @@ public class MoneyManager : MonoBehaviour
         moneyText.text = money.ToString("C2");
         if (money >= 1000) moneyText.text = ((double)money / 1000).ToString("$0.##k");
         else moneyText.text = "$" + money;
-
     }
 
     public void SetMoney(int amount)
     {
         money += amount;
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetFloat("Money", money);
     }
 }

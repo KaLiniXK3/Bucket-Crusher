@@ -10948,6 +10948,7 @@ MonoBehaviour:
   currentCube: {fileID: 0}
   parentCube: {fileID: 1277788665}
   buffDebuffSpawner: {fileID: 1437147072}
+  buffSpawner: {fileID: 1437147074}
 --- !u!1 &1150246407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5180989995975655279, guid: 547141522f9716642ba3b895e516b7fc, type: 3}
@@ -13665,6 +13666,7 @@ MonoBehaviour:
   levelCountText: {fileID: 134026496}
   cubesParent: {fileID: 1277788665}
   levelFinishedImage: {fileID: 1333505211}
+  gameManager: {fileID: 0}
   destroyedCubeAmount: 0
   sceneBuildIndex: 0
 --- !u!4 &1459055287

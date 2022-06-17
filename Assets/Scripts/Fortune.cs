@@ -35,7 +35,7 @@ public class Fortune : MonoBehaviour
 
         if (isSpinning)
         {
-            transform.Rotate(0, 0, genSpeed, Space.World);
+            transform.Rotate(0, 0, genSpeed * Time.deltaTime * 90, Space.World);
             genSpeed -= subSpeed;
         }
         if (genSpeed <= 0)

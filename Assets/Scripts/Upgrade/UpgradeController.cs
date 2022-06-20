@@ -42,7 +42,7 @@ public class UpgradeController : MonoBehaviour
 
     //Constants
     float sizeUpgradeAmount = 0.001f;
-    float fuelUpgradeAmount = 10;
+    float fuelUpgradeAmount = 25;
 
     private void Start()
     {

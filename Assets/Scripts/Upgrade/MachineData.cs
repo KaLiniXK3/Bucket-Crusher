@@ -33,7 +33,7 @@ public class MachineData : MonoBehaviour
         }
 
         power = 150;
-        fuel = 100;
+        fuel = 200;
         fuelManager.SetFuel();
         rotateKnife = currentKnife.GetComponent<RotateKnife>();
         size = currentKnife.transform.localScale;
